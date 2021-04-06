@@ -1,5 +1,6 @@
 /*
 https://leetcode.com/problems/two-sum/
+Difficulty: Easy
 question and example are below the code
 */
 
