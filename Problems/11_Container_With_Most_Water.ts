@@ -7,14 +7,15 @@ question and example are below the code
 function maxArea(height: number[]): number {
     let max = 0;
     let heightOrigin = [...height];
-    let secondMaxHeight = height.sort(function(a,b) {return b-a;})[1];
+    let secondMaxHeight = height.sort(function(a,b) {return b-a;})[1]; // get the second highest value to check maximum area value
     for (let i = 0; i < heightOrigin.length-1; i++) {
         const height1 = heightOrigin[i];
+        if(max > secondMaxHeight * (heightOrigin.length - i)) break; // if max is already bigger than possible maximum area, skip the for loop
         for (let j = heightOrigin.length - 1; j > 0; j--) {
-            if(max > secondMaxHeight * (j - i)) break;
-            const height2 = Math.min(heightOrigin[j],heightOrigin[i]);
+            if(max > secondMaxHeight * (j - i)) break; // if max is already bigger than possible maximum area, skip the for loop
+            const height2 = Math.min(heightOrigin[j],heightOrigin[i]); 
             const area = height2 * (j - i);
-            if(max < area) max = area;
+            if(max < area) max = area; // assign area value if it is bigger than former max
         }
     }
     return max;
